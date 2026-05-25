@@ -439,7 +439,7 @@ function renderClients() {
   db.clients.forEach(c => {
     html += `<div class="card">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-        <input class="inline-input" value="${esc(c.name)}" oninput="updClient('${c.id}','name',this.value)" placeholder="客户名称" />
+        <input class="inline-input" value="${esc(c.name)}" onblur="updClient('${c.id}','name',this.value)" placeholder="客户名称" />
         <button class="btn-sm btn-danger" onclick="delClient('${c.id}')">删除客户</button>
       </div>
       <div class="section-label">链接列表</div>
@@ -447,16 +447,16 @@ function renderClients() {
         <div class="link-edit-block">
           <div class="field-row">
             <span class="field-label">内部叫法</span>
-            <input type="text" value="${esc(l.innerName)}" oninput="updLink('${c.id}','${l.id}','innerName',this.value)" placeholder="你们内部的命名" />
+            <input type="text" value="${esc(l.innerName)}" onblur="updLink('${c.id}','${l.id}','innerName',this.value)" placeholder="你们内部的命名" />
             <button class="btn-sm btn-danger" onclick="delLink('${c.id}','${l.id}')" style="flex-shrink:0">×</button>
           </div>
           <div class="field-row">
             <span class="field-label">客户叫法</span>
-            <input type="text" value="${esc(l.clientName)}" oninput="updLink('${c.id}','${l.id}','clientName',this.value)" placeholder="客户给这条链接的命名" />
+            <input type="text" value="${esc(l.clientName)}" onblur="updLink('${c.id}','${l.id}','clientName',this.value)" placeholder="客户给这条链接的命名" />
           </div>
           <div class="field-row">
             <span class="field-label">链接 URL</span>
-            <input type="url" value="${esc(l.url)}" oninput="updLink('${c.id}','${l.id}','url',this.value)" placeholder="https://..." style="font-family:var(--mono);font-size:12px" />
+            <input type="url" value="${esc(l.url)}" onblur="updLink('${c.id}','${l.id}','url',this.value)" placeholder="https://..." style="font-family:var(--mono);font-size:12px" />
           </div>
         </div>`).join('')}
       <button class="btn-add" onclick="addLink('${c.id}')">+ 添加链接</button>
@@ -475,7 +475,7 @@ function renderAccounts() {
     const boundClient = db.clients.find(c => c.id === a.clientId);
     html += `<div class="card">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-        <input class="inline-input" value="${esc(a.name)}" oninput="updAccount('${a.id}','name',this.value)" placeholder="公众号名称" />
+        <input class="inline-input" value="${esc(a.name)}" onblur="updAccount('${a.id}','name',this.value)" placeholder="公众号名称" />
         <button class="btn-sm btn-danger" onclick="delAccount('${a.id}')">删除</button>
       </div>
       <div class="field-row">
@@ -494,11 +494,11 @@ function renderAccounts() {
       </div>` : ''}
       <div class="field-row">
         <span class="field-label">菜单1名称</span>
-        <input type="text" value="${esc(a.menu1)}" oninput="updAccount('${a.id}','menu1',this.value)" placeholder="如：每日资讯" />
+        <input type="text" value="${esc(a.menu1)}" onblur="updAccount('${a.id}','menu1',this.value)" placeholder="如：每日资讯" />
       </div>
       <div class="field-row">
         <span class="field-label">菜单2名称</span>
-        <input type="text" value="${esc(a.menu2)}" oninput="updAccount('${a.id}','menu2',this.value)" placeholder="如：今日资讯" />
+        <input type="text" value="${esc(a.menu2)}" onblur="updAccount('${a.id}','menu2',this.value)" placeholder="如：今日资讯" />
       </div>
     </div>`;
   });
