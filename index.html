@@ -277,8 +277,8 @@
 </div>
 
 <script>
-const TEMPLATE_INTRO = '欢迎关注：【{name}】\n\n粉丝专享福利：内部精选！（必须添加客服才能领取福利）\n\n👉👉👉 ';
-const TEMPLATE_SUFFIX = '>点击此处！领取精选股票池！</a>';
+const TEMPLATE_INTRO = '欢迎关注：【{name}】\n粉丝专享福利: 内部精选！（必须添加客服才能领取福利）';
+const TEMPLATE_LINK = '👉👉👉<a href="{url}">点击此处！领取精选股票池！</a>';
 
 const defaultDb = {
   clients: [
@@ -405,8 +405,9 @@ function renderOperate() {
 
   if (op.generated && acc && selLink && selLink.url) {
     const url = selLink.url;
-    const introLine = TEMPLATE_INTRO.replace('{name}', acc.name) + `<a href="${url}"` + TEMPLATE_SUFFIX;
-    const autoReply = [introLine, introLine, introLine].join('\n');
+    const intro = TEMPLATE_INTRO.replace('{name}', acc.name);
+    const linkLine = TEMPLATE_LINK.replace('{url}', url);
+    const autoReply = intro + '\n' + [linkLine, linkLine, linkLine].join('\n');
 
     html += `<div class="section">
       <hr class="divider" />
